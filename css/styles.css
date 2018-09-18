@@ -1,8 +1,7 @@
 #container {
 	height: 100%;
+	width: 100%;
 	position: relative;
-	float: left;
-	background-color: #032F48;
 }
 
 h1 {
@@ -13,12 +12,16 @@ h1 {
 
 #places-container {
 	height: 100%;
-	width: 40%;
+	width: 30%;
+	background-color: #032F48;
+	float: left;
 }
 
 #filter-locations-box {
 	position: relative;
 	width: 70%;
+	margin-left: 8px;
+	margin-right: 2px;
 }
 
 #filter-locations-button {
