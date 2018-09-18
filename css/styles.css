@@ -1,3 +1,7 @@
+body {
+	height: 100%;
+}
+
 #container {
 	height: 100%;
 	width: 100%;
@@ -10,26 +14,30 @@ h1 {
 	text-align: center;
 }
 
+p {
+	color: white;
+}
+
 #places-container {
 	height: 100%;
-	width: 30%;
+	width: 35%;
 	background-color: #032F48;
 	float: left;
+	text-align: left;
 }
 
 #filter-locations-box {
 	position: relative;
 	width: 70%;
-	margin-left: 8px;
-	margin-right: 2px;
+	margin-left: 26px;
 }
 
 #filter-locations-button {
-	width: 20%;
 }
 
 #map {
     height: 100%;
+    width: 65%;
     position: absolute;
     float: right;
   }
