@@ -1,0 +1,32 @@
+#container {
+	height: 100%;
+	position: relative;
+	float: left;
+	background-color: #032F48;
+}
+
+h1 {
+	color: white;
+	font-size: 20px;
+	text-align: center;
+}
+
+#places-container {
+	height: 100%;
+	width: 40%;
+}
+
+#filter-locations-box {
+	position: relative;
+	width: 70%;
+}
+
+#filter-locations-button {
+	width: 20%;
+}
+
+#map {
+    height: 100%;
+    position: absolute;
+    float: right;
+  }
