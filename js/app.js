@@ -14,7 +14,6 @@ function initMap() {
 		center: {lat: 37.235808, lng: -121.962375},
 		zoom: 14,
 		styles: styles,
-		mapTypeControl: false
 	});
 
 	// These are the bakery places that will be shown to the user
