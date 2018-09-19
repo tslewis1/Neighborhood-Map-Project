@@ -1,6 +1,5 @@
-var map;
-
-var mapView = function() {
+var mapModel = function() {
+	var map;
 	// Create a new array for all markers
 	var markers = [];
 	// These are the bakery places that will be shown to the user
@@ -14,7 +13,7 @@ var mapView = function() {
 	];
 };
 
-var mapModel = {
+var mapView = {
 };
 
 var viewModel = {
