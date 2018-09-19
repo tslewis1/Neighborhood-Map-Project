@@ -13,12 +13,13 @@
 				<input id="filter-locations-box" type="text" value="">
 				<input id="filter-locations-button" type="button" value="Filter">
 			</div>
+			<p <input data-bind="value: bakeryName"></p>
 		</div>
 		<div id="map"></div>
 	</div>
 	<script src="js/knockout-3.4.2.js"></script>
     <script src="js/app.js"></script>
-	<script defer src= "https://maps.googleapis.com/maps/api/js?libraries=places,geometry&key=AIzaSyCRcl69S3ORE0yakt0COJv0uwGZaRGxF20&v=3&callback=initMap">
+	<script async defer src= "https://maps.googleapis.com/maps/api/js?libraries=places,geometry&key=AIzaSyCRcl69S3ORE0yakt0COJv0uwGZaRGxF20&v=3&callback=initMap">
     </script>
 </body>
 </html>
