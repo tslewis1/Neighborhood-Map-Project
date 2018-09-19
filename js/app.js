@@ -14,16 +14,16 @@ var mapView = function() {
 	];
 };
 
-var mapModel = function() {
-	function initMap() {
+var mapModel = {
+};
+
+var viewModel = {
+	initMap: function() {
 		// Create a new map
 		map = new google.maps.Map(document.getElementById('map'), {
 			center: {lat: 37.235808, lng: -121.962375},
 			zoom: 14
 		});
 	}
-};
-
-var viewModel = function() {
-
 }
+viewModel.initMap();
