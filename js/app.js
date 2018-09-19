@@ -1,5 +1,4 @@
 var mapModel = function() {
-	var map;
 	// Create a new array for all markers
 	var markers = [];
 	// These are the bakery places that will be shown to the user
@@ -14,9 +13,7 @@ var mapModel = function() {
 };
 
 var mapView = {
-};
-
-var viewModel = {
+	var map;
 	initMap: function() {
 		// Create a new map
 		map = new google.maps.Map(document.getElementById('map'), {
@@ -24,5 +21,9 @@ var viewModel = {
 			zoom: 14
 		});
 	}
+};
+
+var viewModel = {
+	
 }
-viewModel.initMap();
+mapView.initMap();
