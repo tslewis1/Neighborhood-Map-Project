@@ -59,5 +59,3 @@ var viewModel = function() {
 		this.setMarker(defaultMarker);
 	});
 }
-
-mapView.initMap();
