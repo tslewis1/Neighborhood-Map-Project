@@ -32,7 +32,7 @@ var mapView = function() {
 	var map;
 
 	// Initialize new map
-	initMap: function() {
+	initMap = function() {
 		// Create a new map
 		map = new google.maps.Map(document.getElementById('map'), {
 			center: {lat: 37.235808, lng: -121.962375},
