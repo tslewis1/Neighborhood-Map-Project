@@ -12,15 +12,35 @@ var mapModel = function() {
 	];
 
 	// This for loop uses the bakery locations array to create an array of map markers
-	for (var i = 0; i <bakeryLocations.length; i++) {
+	for (var i = 0; i < bakeryLocations.length; i++) {
 		var position = bakeryLocations[i].location;
 		var title = bakeryLocations[i].title;
 		// Create a marker for each location and put them into an array
-		var marker = new google.maps.Marker({
+		var marker = new Marker({
 			position: position,
 			title: title,
 			animation: google.maps.Animation.DROP,
-			icon: defaultMarker
+			icon: {
+				path: BAKERY,
+				fillColor: '#DFAA11',
+				fillOpacity: 1,
+				strokeColor: '',
+				strokeWeight: 0
+			},
+			map_icon_label: '<span class"map-icon map-icon-bakery"></span>'
+		})
+	}
+
+	highlightedMarker = function() {
+		var highlightedMarker = new Marker({
+			icon: {
+				path: BAKERY,
+				fillColor: '#117BDF',
+				fillOpacity: 1,
+				strokeColor: '',
+				strokeWeight: 0
+			},
+			map_icon_label: '<span class"map-icon map-icon-bakery"></span>'
 		})
 	}
 
@@ -41,10 +61,10 @@ var mapView = function() {
 	}
 
 	// Style the default marker icon
-	var defaultMarker = makeMarkers('0091FF');
+	var defaultMarker = marker;
 
 	// Create a highlighted marker color for when the user clicks on or mouses over the marker
-	var highlightedMarker = makeMarkers('EDF453');
+	var highlightedMarker = highlightedMarker();
 
 	var infoWindow = new google.maps.InfoWindow();
 };
