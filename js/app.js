@@ -30,7 +30,7 @@ var mapModel = function() {
 
 var mapView = function() {
 	var map;
-	
+
 	// Initialize new map
 	initMap: function() {
 		// Create a new map
@@ -50,7 +50,14 @@ var mapView = function() {
 };
 
 var viewModel = function() {
-	
+	// Event listener for mouseover to change the color for a highlighted marker
+	marker.addListener('mouseover', function() {
+		this.setMarker(highlightedMarker);
+	});
+	// Event listener for mouseout to change the color back to the default color
+	marker.addListener('mouseout', function() {
+		this.setMarker(defaultMarker);
+	});
 }
 
 mapView.initMap();

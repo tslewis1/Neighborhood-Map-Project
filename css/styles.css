@@ -37,7 +37,6 @@ p {
 
 #map {
     height: 100%;
-    width: 65%;
     position: absolute;
     float: right;
   }
