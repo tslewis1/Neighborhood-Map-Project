@@ -24,19 +24,34 @@ p {
 	background-color: #032F48;
 	float: left;
 	text-align: left;
+	border-radius: 10px;
 }
 
 #filter-locations-box {
 	position: relative;
-	width: 70%;
-	margin-left: 26px;
+	width: 65%;
+	margin-left: 18px;
 }
 
 #filter-locations-button {
+	font-size: 12px;
+	text-align: center;
+	border: none;
+	border-radius: 15px;
+	margin-left: 5px;
 }
 
+#filter-locations-button:hover {
+	background-color: #4F829F;
+	color: white;
+	border: none;
+}
 #map {
     height: 100%;
     position: absolute;
     float: right;
-  }
+}
+
+.fa-filter {
+	color: #032F48;
+}
