@@ -1,3 +1,14 @@
+var map;
+
+// Initialize new map
+initMap = function() {
+	// Create a new map
+	map = new google.maps.Map(document.getElementById('map'), {
+		center: {lat: 37.235808, lng: -121.962375},
+		zoom: 14
+	});
+}
+	
 var mapModel = function() {
 	// Create a new array for all markers
 	var markers = [];
@@ -49,16 +60,6 @@ var mapModel = function() {
 };
 
 var mapView = function() {
-	var map;
-
-	// Initialize new map
-	initMap = function() {
-		// Create a new map
-		map = new google.maps.Map(document.getElementById('map'), {
-			center: {lat: 37.235808, lng: -121.962375},
-			zoom: 14
-		});
-	}
 
 	// Style the default marker icon
 	var defaultMarker = marker;
