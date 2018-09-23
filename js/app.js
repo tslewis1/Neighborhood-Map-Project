@@ -58,9 +58,6 @@ var mapModel = function() {
 			map_icon_label: '<span class"map-icon map-icon-bakery"></span>'
 		});
 	};
-
-	// Push markers to the array
-	markers.push(marker);
 };
 
 var mapView = function() {
