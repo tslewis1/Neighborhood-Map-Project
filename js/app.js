@@ -43,7 +43,7 @@ var mapModel = function() {
 				strokeWeight: 0
 			},
 			map_icon_label: '<span class"map-icon map-icon-bakery"></span>'
-		})
+		});
 	}
 
 	highlightedMarker = function() {
@@ -56,8 +56,8 @@ var mapModel = function() {
 				strokeWeight: 0
 			},
 			map_icon_label: '<span class"map-icon map-icon-bakery"></span>'
-		})
-	}
+		});
+	};
 
 	// Push markers to the array
 	markers.push(marker);
@@ -83,4 +83,4 @@ var viewModel = function() {
 	marker.addListener('mouseout', function() {
 		this.setMarker(defaultMarker);
 	});
-}
+};
