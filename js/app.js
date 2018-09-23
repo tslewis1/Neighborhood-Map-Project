@@ -1,14 +1,18 @@
 var map;
 
 // Initialize new map
-initMap = function() {
-	// Create a new map
+function initMap() {
 	map = new google.maps.Map(document.getElementById('map'), {
 		center: {lat: 37.235808, lng: -121.962375},
-		zoom: 14
+		zoom: 13
 	});
 }
-	
+
+// const Yelp = require('yelp-fusion');
+
+// const apiKey = 'B55nUzn2sGNPGNgWRLih9hhH4yT64R4UHllXLdiuYEdPW3lEtriTSdQsOP1Ne-GB-QsCjjzAL-2HIBinde8CddU8OwyolvUr07Vu9MVnG3diFOPCI-f9oQZvCMKiW3Yx'
+
+
 var mapModel = function() {
 	// Create a new array for all markers
 	var markers = [];
