@@ -1,11 +1,18 @@
-body {
+html, body {
 	height: 100%;
+	width: 100%;
+	padding: 0;
+	margin: 0;
 }
 
 #container {
 	height: 100%;
 	width: 100%;
 	position: relative;
+	float: left;
+	display: block;
+	box-sizing: border-box;
+	padding: 10px;
 }
 
 h1 {
@@ -20,11 +27,14 @@ p {
 
 #places-container {
 	height: 100%;
-	width: 35%;
+	width: 22%;
 	background-color: #032F48;
 	float: left;
 	text-align: left;
 	border-radius: 10px;
+	box-sizing: border-box;
+	z-index: 1;
+	position: relative;
 }
 
 #filter-locations-box {
@@ -48,8 +58,10 @@ p {
 }
 #map {
     height: 100%;
-    position: absolute;
     float: right;
+    width: 100%;
+    z-index: 0;
+    position: absolute;
 }
 
 .fa-filter {
