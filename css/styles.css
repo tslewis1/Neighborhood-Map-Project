@@ -39,7 +39,7 @@ p {
 
 #filter-locations-box {
 	position: relative;
-	width: 65%;
+	width: 60%;
 	margin-left: 18px;
 }
 
@@ -49,6 +49,7 @@ p {
 	border: none;
 	border-radius: 15px;
 	margin-left: 5px;
+	width: 35%;
 }
 
 #filter-locations-button:hover {
