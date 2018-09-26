@@ -12,7 +12,6 @@ html, body {
 	float: left;
 	display: block;
 	box-sizing: border-box;
-	padding: 10px;
 }
 
 h1 {
@@ -27,11 +26,10 @@ p {
 
 #places-container {
 	height: 100%;
-	width: 22%;
+	width: 20%;
 	background-color: #032F48;
 	float: left;
 	text-align: left;
-	border-radius: 10px;
 	box-sizing: border-box;
 	z-index: 1;
 	position: relative;
