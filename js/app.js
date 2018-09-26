@@ -1,3 +1,5 @@
+var marker;
+
 // Initialize new map
 function initMap() {
 	var map;
@@ -38,7 +40,7 @@ function initMap() {
 	    var title = locations[i].title;
 	    var image = 'map-icons/bakery.svg';
 	    // Create a marker per location, and put into markers array.
-	    var marker = new google.maps.Marker({
+	    marker = new google.maps.Marker({
 	    	position: position,
 	        title: title,
 	        animation: google.maps.Animation.DROP,
@@ -57,8 +59,8 @@ function initMap() {
 	marker.addListener('click', toggleBounce);
 };
 
- function toggleBounce() {
- 	if (marker.getAnimation() !== null) {
+function toggleBounce() {
+	if (marker.getAnimation() !== null) {
  		marker.setAnimation(null);
  	} else {
  		marker.setAnimation(google.maps.Animation.BOUNCE);
@@ -71,7 +73,7 @@ function addInfoWindowContent(marker, infowindow) {
 	if (infowindow.marker != marker) {
 		infowindow.setContent('');
 		infowindow.marker = marker;
-		
+
 		// Clear the infowindow content when it is closed
 		infowindow.addListener('closeclick', function() {
 			infowindow.marker = null;
