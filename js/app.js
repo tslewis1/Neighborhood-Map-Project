@@ -14,8 +14,10 @@ function initMap() {
 	// Create a searchbox to search for places
 	var searchBox = new google.maps.places.SearchBox(
 		document.getElementById('filter-locations-box'));
+
 	// Keep the search within the map bounds
 	searchBox.setBounds(map.getBounds());
+
 	// These are the bakery places that will be shown to the user
 	var locations = [
 			{title: "Manresa Bread", location: {lat: 37.227059, lng: -121.981004}},
@@ -28,12 +30,6 @@ function initMap() {
 
 	// Make infowindow 
 	var infoWindow = new google.maps.InfoWindow();
-
-	// Style the default marker
-	var defaultMarker = 'map-icons/bakery.svg'
-
-	// Created a highlighted marker color for when the user mouses over the marker
-	var highlightedMarker = 'map-icons/bakery-highlighted.psd'
 
     // The following group uses the location array to create an array of markers on initialize.
     for (var i = 0; i < locations.length; i++) {
@@ -70,10 +66,12 @@ function initMap() {
  };
 
 function addInfoWindowContent(marker, infowindow) {
+
 	// Check to see if infowindow is not open
 	if (infowindow.marker != marker) {
 		infowindow.setContent('');
 		infowindow.marker = marker;
+		
 		// Clear the infowindow content when it is closed
 		infowindow.addListener('closeclick', function() {
 			infowindow.marker = null;
