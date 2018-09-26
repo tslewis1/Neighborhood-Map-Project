@@ -46,14 +46,16 @@ function initMap() {
 	        animation: google.maps.Animation.DROP,
 	        // icon: defaultMarker,
 	        id: i,
-	        icon: image
+	        icon: image,
+	        info: title
 		});
 
     marker.setMap(map);
 	};
 
 	marker.addListener('click', function() {
-		addInfoWindowContent(this, infoWindow);
+		infoWindow.setContent(this.info);
+		infoWindow.open(map, this);
 	});
 
 	marker.addListener('click', toggleBounce);
