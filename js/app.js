@@ -37,7 +37,7 @@ function initMap() {
 
   // Make infowindow 
   var infoWindow = new google.maps.InfoWindow({
-    content: '<p>test</p>'
+    content: ''
   });
 
   // The following group uses the location array to create an array of markers on initialize.
@@ -58,12 +58,17 @@ function initMap() {
     });
     marker.setMap(map);
 
+    var bouncingMarker = null;
+
     marker.addListener('click', (function(marker, i) {
       return function() {
-        if (this.getAnimation() !== null) {
-          this.setAnimation(null);
+        if (bouncingMarker)
+        	bouncingMarker.setAnimation(null);
+        if (bouncingMarker != this) {
+        	this.setAnimation(google.maps.Animation.BOUNCE);
+        	bouncingMarker = this;
         } else {
-          this.setAnimation(google.maps.Animation.BOUNCE);
+        	bouncingMarker = null;
         }
         infoWindow.setContent(this.title);
         infoWindow.open(map, this);
