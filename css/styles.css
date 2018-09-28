@@ -63,6 +63,17 @@ p {
     position: absolute;
 }
 
+#pano {
+	height: 20%;
+	width: 30%;
+	float: right;
+}
+
+#infowindow-content {
+	width: 300px;
+	height: 200px;
+}
+
 .fa-filter {
 	color: #032F48;
 }
