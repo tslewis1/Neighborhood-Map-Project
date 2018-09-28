@@ -1,29 +1,31 @@
-var marker;
-var category;
+
 
 // Initialize new map
 function initMap() {
-  var map;
+	var map;
+	var marker;
+	var category;
 
-  // Create a new map
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: {
-      lat: 37.228962,
-      lng: -121.984667
-    },
-    zoom: 15
-  });
+	// Create a new map
+	map = new google.maps.Map(document.getElementById('map'), {
+    	center: {
+      		lat: 37.228962,
+      		lng: -121.984667
+    	},
+    	zoom: 15,
+    	streetViewControl: false
+  	});
 
-  var defaultBounds = new google.maps.LatLngBounds(
-  	new google.maps.LatLng(37.235808,-121.962375),
-  	new google.maps.LatLng(37.22029,-121.991859));
+  	var defaultBounds = new google.maps.LatLngBounds(
+  		new google.maps.LatLng(37.235808,-121.962375),
+  		new google.maps.LatLng(37.22029,-121.991859));
 
-  var input = document.getElementById('filter-locations-box');
-  var searchBox = new google.maps.places.SearchBox(input, {
-  	bounds: defaultBounds
-  });
+  	var input = document.getElementById('filter-locations-box');
+  	var searchBox = new google.maps.places.SearchBox(input, {
+  		bounds: defaultBounds
+  	});
 
-  // autocomplete = new google.maps.places.Autocomplete(input, options);
+  	// autocomplete = new google.maps.places.Autocomplete(input, options);
 
     // These are the bakery places that will be shown to the user
     var locations = [
@@ -35,46 +37,53 @@ function initMap() {
             {title: "Nothing Bundt Cakes", location: { lat: 37.229968, lng: -121.981321}, category: ['bakery', 'cake']}
     ];
 
-  // Make infowindow 
-  var infoWindow = new google.maps.InfoWindow({
-    content: ''
-  });
+  	// Make infowindow 
+  	var infoWindow = new google.maps.InfoWindow({
+   		content: '<div id="infowindow-content"></div>',
+   		position: position
+  	});
 
-  // The following group uses the location array to create an array of markers on initialize.
-  for (var i = 0; i < locations.length; i++) {
-    console.log(locations[i].location);
-    var position = locations[i].location;
-    var title = locations[i].title;
-    var image = 'map-icons/bakery.svg';
-    category = locations[i].category;
-    // Create a marker per location, and put into markers array.
-    marker = new google.maps.Marker({
-      position: position,
-      title: title,
-      animation: google.maps.Animation.DROP,
-      icon: image,
-      category: category,
-      id: i
-    });
+  	// The following group uses the location array to create an array of markers on initialize.
+  	for (var i = 0; i < locations.length; i++) {
+    	console.log(locations[i].location);
+    	var position = locations[i].location;
+    	var title = locations[i].title;
+    	var image = 'map-icons/bakery.svg';
+    	category = locations[i].category;
+    	// Create a marker per location, and put into markers array.
+    	marker = new google.maps.Marker({
+      	position: position,
+      	title: title,
+      	animation: google.maps.Animation.DROP,
+      	icon: image,
+      	category: category,
+      	id: i
+    	});
     marker.setMap(map);
 
     var bouncingMarker = null;
 
+    // Add event listener for markers being clicked, and add animation when clicked
     marker.addListener('click', (function(marker, i) {
-      return function() {
-        if (bouncingMarker)
-        	bouncingMarker.setAnimation(null);
-        if (bouncingMarker != this) {
-        	this.setAnimation(google.maps.Animation.BOUNCE);
-        	bouncingMarker = this;
-        } else {
-        	bouncingMarker = null;
-        }
+    	return function() {
+        	if (bouncingMarker)
+        		bouncingMarker.setAnimation(null);
+        	if (bouncingMarker != this) {
+        		this.setAnimation(google.maps.Animation.BOUNCE);
+        		bouncingMarker = this;
+        	} else {
+        		bouncingMarker = null;
+        	}
         infoWindow.setContent(this.title);
         infoWindow.open(map, this);
-      };
+      	};
     })(this, i));
-  }
+	}
+
+	google.maps.event.addListener(infoWindow, 'domready', function() {
+		var panorama = new google.maps.StreetViewPanorama(document.getElementById('infowindow-content'));
+		panorama.setPosition(infoWindow.getPosition());
+	});
 }
 
 function filterLocations() {
@@ -83,47 +92,4 @@ function filterLocations() {
 	} else {
 		marker.setVisible(false);
 	}
-} 
-
-function addInfoWindowContent(marker, infowindow) {
-
-  // Check to see if infowindow is not open
-  if (infowindow.marker != marker) {
-    infowindow.setContent('');
-    infowindow.marker = marker;
-
-    // Clear the infowindow content when it is closed
-    infowindow.addListener('closeclick', function() {
-      infowindow.marker = null;
-    });
-
-    var streetViewService = new google.maps.StreetViewService();
-    var radius = 40;
-
-    function findStreetView(data, status) {
-      if (status == google.maps.StreetViewStatus.OK) {
-        var nearStreetView = data.location.latLng;
-        var heading =
-          google.maps.geometry.spherical.computeHeading(
-            nearStreetView, marker.position);
-        infowindow.setContent('<div>' + marker.title +
-          '</div><div id = "streetview-pano"></div>');
-        var panoInfo = {
-          position: nearStreetView,
-          pov: {
-            heading: heading,
-            pitch: 25
-          }
-        };
-        var panorama = new google.maps.StreetViewPanorama(
-          document.getElementById('streetview-pano'),
-          panoInfo);
-      } else {
-        infowindow.setContent('<div>' + marker.title + '</div><div>Sorry, no street view imagery found</div>');
-      }
-    }
-    streetViewService.getPanoramaByLocation(marker.position,
-      radius, findStreetView);
-    infowindow.open(map, marker);
-  }
 }
