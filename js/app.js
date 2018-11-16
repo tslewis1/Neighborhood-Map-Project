@@ -1,5 +1,3 @@
-
-
 // Initialize new map
 function initMap() {
 	var map;
@@ -77,6 +75,7 @@ function initMap() {
 	    		// If the clicked marker equals the bouncing marker, the bouncing should stop. 
 	    		// When the clicked marker does not equal the bouncing marker, the clicked marker should bounce
 	    		// and the first bouncing marker should stop bouncing.
+	    		// Markers are bouncing, yay!
 	    		if (bouncingMarker == this) {
 	    			bouncingMarker.setAnimation(null);
 	    			bouncingMarker = null;
