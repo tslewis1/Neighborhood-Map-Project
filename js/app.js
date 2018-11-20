@@ -8,7 +8,7 @@ function initMap() {
     forceClose = false
   ) => event => {
     const clickedSameMarker = bouncingMarker && bouncingMarker.id === marker.id;
-    if (forceClose) {
+    if (forceClose && clickedSameMarker) {
       bouncingMarker && bouncingMarker.setAnimation(null);
       bouncingMarker = null;
       return;
@@ -18,12 +18,11 @@ function initMap() {
       bouncingMarker.setAnimation(null);
       bouncingMarker = null;
     } else {
+      //clicked other marker
       bouncingMarker && bouncingMarker.setAnimation(null);
       bouncingMarker = marker;
       marker.setAnimation(google.maps.Animation.BOUNCE);
     }
-
-    console.log(event);
   };
   // Create a new map
   map = new google.maps.Map(document.getElementById("map"), {
@@ -86,26 +85,25 @@ function initMap() {
   ];
 
   // creating map markers
-  const markers = locations.map(({ location, title, category }, i) => {
-    var position = location;
-    var title = title;
-    var image = "map-icons/bakery.svg";
-    category = category;
-    // Create a marker per location, and put into markers array.
-    return {
-      marker: new google.maps.Marker({
-        position,
-        map,
+  const markers = locations.map(
+    ({ title, location: position, category }, i) => {
+      var image = "map-icons/bakery.svg";
+      // Create a marker per location, and put into markers array.
+      return {
+        marker: new google.maps.Marker({
+          title,
+          position,
+          category,
+          map,
+          animation: google.maps.Animation.DROP,
+          icon: image,
+          id: i
+        }),
         title,
-        animation: google.maps.Animation.DROP,
-        icon: image,
-        category,
-        id: i
-      }),
-      title,
-      category
-    };
-  });
+        category
+      };
+    }
+  );
 
   // put markers on the map
   markers.forEach(({ marker, title, category }) => {
@@ -113,30 +111,15 @@ function initMap() {
     const infowindow = new google.maps.InfoWindow({
       content: title
     });
+
     infowindow.addListener(
       "closeclick",
       toggleBounceOnMarker(marker, infowindow, true)
     );
 
     marker.addListener("click", event => {
-      toggleBounceOnMarker(marker, infowindow)();
+      toggleBounceOnMarker(marker, infowindow)(event);
       infowindow.open(map, marker);
     });
   });
-
-  // If the clicked marker equals the bouncing marker, the bouncing should stop.
-  // When the clicked marker does not equal the bouncing marker, the clicked marker should bounce
-  // and the first bouncing marker should stop bouncing.
-  // Markers are bouncing, yay!
-  // if (bouncingMarker === marker) {
-  //   bouncingMarker.setAnimation(null);
-  //   bouncingMarker = null;
-  //   infowindow.close();
-  // } else {
-  //   marker.setAnimation(google.maps.Animation.BOUNCE);
-  //   if (bouncingMarker) {
-  //     bouncingMarker.setAnimation(null);
-  //   }
-  //   bouncingMarker = marker;
-  // }
 }
