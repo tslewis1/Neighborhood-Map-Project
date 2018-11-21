@@ -83,7 +83,6 @@ function initMap() {
     const infowindow = new google.maps.InfoWindow({
       content: title
     });
-    console.log(infowindow);
     infowindow.addListener(
       "closeclick",
       toggleBounceOnMarker(marker, true)

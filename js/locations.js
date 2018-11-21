@@ -27,17 +27,18 @@ var locations = [
   {
     title: "Nothing Bundt Cakes",
     location: { lat: 37.229968, lng: -121.981321 },
-    category: ["bakery", "cake"]
+    category: ["bakery", "cake"],
   }
 ];
 
-function Bakery(title, category) {
-  this.title = title;
-  this.category = category;
-}
+const bakeries = locations.map((location) => {
+  const locKeys = Object.keys(location)
+  return locKeys
+    .map(k => ({ key: k, value: ko.observable(location[k]) }))
+    .reduce((acc, { key, value }) => ({ ...acc, [key]: value }), {})
+})
 
-var viewModel = {
-  bakeries: ko.observableArray(locations.map(({title, category}) => (new Bakery (title, category))))
-}
+ko.applyBindings(
+  bakeries
+)
 
-ko.applyBindings(viewModel);
