@@ -4,7 +4,6 @@ function initMap() {
   var bouncingMarker = null;
   const toggleBounceOnMarker = (
     marker,
-    infowindow,
     forceClose = false
   ) => event => {
     const clickedSameMarker = bouncingMarker && bouncingMarker.id === marker.id;
@@ -14,7 +13,6 @@ function initMap() {
       return;
     }
     if (clickedSameMarker) {
-      infowindow && infowindow.close();
       bouncingMarker.setAnimation(null);
       bouncingMarker = null;
     } else {
@@ -24,6 +22,14 @@ function initMap() {
       marker.setAnimation(google.maps.Animation.BOUNCE);
     }
   };
+
+  let openInfo = null;
+  const safeOpenInfoWindow = (infoWindow, marker) => (event) => {
+    openInfo && openInfo.close();
+    openInfo = infoWindow;
+    infoWindow.open(map, marker);
+  }
+
   // Create a new map
   map = new google.maps.Map(document.getElementById("map"), {
     center: {
@@ -111,15 +117,15 @@ function initMap() {
     const infowindow = new google.maps.InfoWindow({
       content: title
     });
-
+    console.log(infowindow);
     infowindow.addListener(
       "closeclick",
-      toggleBounceOnMarker(marker, infowindow, true)
+      toggleBounceOnMarker(marker, true)
     );
 
     marker.addListener("click", event => {
-      toggleBounceOnMarker(marker, infowindow)(event);
-      infowindow.open(map, marker);
+      safeOpenInfoWindow(infowindow, marker)(event);
+      toggleBounceOnMarker(marker)(event);
     });
   });
 }
