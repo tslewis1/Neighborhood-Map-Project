@@ -56,40 +56,6 @@ function initMap() {
   // var clientId = '0K2AW0JW2DVNI2H4VTSQNT0O4IN0WARG2B5GQQMUHSP5WR2J',
   // var clientSecret = 'RUZEIQTPWI2DGI04FBLNZ5SVBBCZFSGRXGOGEP0LGN4HLPKQ';
 
-  // These are the bakery places that will be shown to the user
-  var locations = [
-    {
-      title: "Manresa Bread",
-      location: { lat: 37.227059, lng: -121.981004 },
-      category: ["bakery", "bread"]
-    },
-    {
-      title: "Fleur De Cocoa",
-      location: { lat: 37.223632, lng: -121.983657 },
-      category: ["bakery", "cafe"]
-    },
-    {
-      title: "Icing On The Cake",
-      location: { lat: 37.222009, lng: -121.982357 },
-      category: ["bakery", "cake"]
-    },
-    {
-      title: "Mama's Bakery",
-      location: { lat: 37.231465, lng: -121.980132 },
-      category: ["bakery"]
-    },
-    {
-      title: "Maple Leaf Donuts",
-      location: { lat: 37.233336, lng: -121.978076 },
-      category: ["bakery", "donuts"]
-    },
-    {
-      title: "Nothing Bundt Cakes",
-      location: { lat: 37.229968, lng: -121.981321 },
-      category: ["bakery", "cake"]
-    }
-  ];
-
   // creating map markers
   const markers = locations.map(
     ({ title, location: position, category }, i) => {
