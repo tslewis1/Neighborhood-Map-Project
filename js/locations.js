@@ -31,11 +31,13 @@ var locations = [
   }
 ];
 
-var Bakery = function(title, category) {
+function Bakery(title, category) {
   this.title = title;
   this.category = category;
 }
 
 var viewModel = {
-  bakeries: locations.map(({title, category}) => (new Bakery (title, category)))
+  bakeries: ko.observableArray(locations.map(({title, category}) => (new Bakery (title, category))))
 }
+
+ko.applyBindings(viewModel);
