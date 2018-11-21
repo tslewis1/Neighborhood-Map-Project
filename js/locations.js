@@ -37,5 +37,5 @@ var Bakery = function(title, category) {
 }
 
 var viewModel = {
-  bakeries: locations.map(({title, category}) => (new Bakery (title, category)));
+  bakeries: locations.map(({title, category}) => (new Bakery (title, category)))
 }
