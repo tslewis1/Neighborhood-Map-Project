@@ -15,7 +15,7 @@
 		<div id="places-container">
 			<h1>Bakeries in Los Gatos!</h1>
 			<div>
-				<input id="filter-locations-box" type="text" value="Search Me!">
+				<input id="filter-locations-box" type="text" value="Search Me!" data-bind="value: filterParameter">
 				<button id="filter-locations-button">Filter<i class="fas fa-filter"></i></button>
 			</div>
 			<div>
@@ -27,10 +27,13 @@
 		</div>
 		<div id="map"></div>
 	</div>
-	<script src="js/app.js"></script>
+	<script src="js/mapView.js"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?libraries=places,geometry&key=AIzaSyCRcl69S3ORE0yakt0COJv0uwGZaRGxF20&v=3&callback=initMap"
 	 async defer></script>
 	<script src="js/knockout-3.4.2.js"></script>
 	<script src="js/locations.js"></script>
+	<script src="js/filter.js"></script>
+
+	<script src="js/app.js"></script>
 
 </html>
