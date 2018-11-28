@@ -20,7 +20,12 @@
 			</div>
 			<div>
 				<ul data-bind="foreach: bakeries">
-					<li data-bind="text: title" style="color: white">
+					<li>
+						<a href="#"data-bind="text: title, click: onclick" style="color: white"></a>
+						<div data-bind="style: {display: (visible())? 'inherit' : 'none'}">
+							<p data-bind="text: location"></p>
+							<p data-bind="text: category"></p>
+						</div>
 					</li>
 				</ul>
 			</div>

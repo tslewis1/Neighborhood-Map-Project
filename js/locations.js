@@ -31,6 +31,14 @@ var locations = [
   }
 ];
 
+const locations2 = [
+  {
+    owner: "Nothing Bundt Cakes",
+    location: { lat: 37.229968, lng: -121.981321 },
+    category: ["bakery", "cake"]
+  }
+];
+
 //TODO: make this into a function that accepts an argument so that it can be configured by app.js
 
 const bakerize = locations =>
@@ -38,7 +46,10 @@ const bakerize = locations =>
     let valuesAsObservables = Object.keys(location)
       .map(k => ({ key: k, value: ko.observable(location[k]) }))
       .reduce((acc, { key, value }) => ({ ...acc, [key]: value }), {});
-
+    valuesAsObservables.visible = ko.observable(false);
+    valuesAsObservables.onclick = function() {
+      valuesAsObservables.visible(!valuesAsObservables.visible());
+    };
     return valuesAsObservables;
   });
 

@@ -25,7 +25,7 @@ const locationsFilter = (searchAlgorithm = searchForTitle) => (
 
 var filter = locations => {
   return {
-    onUpdate: function name({ filter: { filterParams }, bakeries }) {
+    onUpdate: function({ filter: { filterParams }, bakeries }) {
       bakeries(bakerize(locationsFilter()(filterParams(), locations)));
       return true;
     },
