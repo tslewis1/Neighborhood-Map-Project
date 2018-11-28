@@ -27,20 +27,19 @@ var locations = [
   {
     title: "Nothing Bundt Cakes",
     location: { lat: 37.229968, lng: -121.981321 },
-    category: ["bakery", "cake"],
+    category: ["bakery", "cake"]
   }
 ];
 
-const bakeries = locations.map((location) => {
-  const locKeys = Object.keys(location)
-  return locKeys
-    .map(k => ({ key: k, value: ko.observable(location[k]) }))
-    .reduce((acc, { key, value }) => ({ ...acc, [key]: value }), {})
-})
+//TODO: make this into a function that accepts an argument so that it can be configured by app.js
+
+const bakerize = locations =>
+  locations.map(location => {
+    let valuesAsObservables = Object.keys(location)
+      .map(k => ({ key: k, value: ko.observable(location[k]) }))
+      .reduce((acc, { key, value }) => ({ ...acc, [key]: value }), {});
+
+    return valuesAsObservables;
+  });
 
 // ko.applyBindings(bakeries)
-
-
-
-
-

@@ -1,5 +1,4 @@
-
 ko.applyBindings({
-  filterParameter: "Search Me!",
-  bakeries
-})
+  filter: filter(locations),
+  bakeries: ko.observableArray(bakerize(locations))
+});

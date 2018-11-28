@@ -15,12 +15,12 @@
 		<div id="places-container">
 			<h1>Bakeries in Los Gatos!</h1>
 			<div>
-				<input id="filter-locations-box" type="text" value="Search Me!" data-bind="value: filterParameter">
-				<button id="filter-locations-button">Filter<i class="fas fa-filter"></i></button>
+				<input id="filter-locations-box" type="text" data-bind="textInput: filter.filterParams, event: {keyup: filter.onUpdate}">
+				<button id="filter-locations-button" data-bind="click: console.log(filter.filterParams())">Filter<i class="fas fa-filter"></i></button>
 			</div>
 			<div>
 				<ul data-bind="foreach: bakeries">
-					<li data-bind="text: title">
+					<li data-bind="text: title" style="color: white">
 					</li>
 				</ul>
 			</div>

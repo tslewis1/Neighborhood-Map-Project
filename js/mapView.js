@@ -45,10 +45,10 @@ function initMap() {
     new google.maps.LatLng(37.22029, -121.991859)
   );
 
-  var input = document.getElementById("filter-locations-box");
-  var searchBox = new google.maps.places.SearchBox(input, {
-    bounds: defaultBounds
-  });
+  // var input = document.getElementById("filter-locations-box");
+  // var searchBox = new google.maps.places.SearchBox(input, {
+  //   bounds: defaultBounds
+  // });
 
   // autocomplete = new google.maps.places.Autocomplete(input, options);
 
