@@ -52,9 +52,9 @@ function initMap() {
 
   // autocomplete = new google.maps.places.Autocomplete(input, options);
 
-  // Foursquare Client ID and Secret
-  // var clientId = '0K2AW0JW2DVNI2H4VTSQNT0O4IN0WARG2B5GQQMUHSP5WR2J',
-  // var clientSecret = 'RUZEIQTPWI2DGI04FBLNZ5SVBBCZFSGRXGOGEP0LGN4HLPKQ';
+  // Yelp Client ID and API Key
+  // var APIKey = 'TWMNEkBZq9VALm1TOkL46w',
+  // var clientSecret = 'B55nUzn2sGNPGNgWRLih9hhH4yT64R4UHllXLdiuYEdPW3lEtriTSdQsOP1Ne-GB-QsCjjzAL-2HIBinde8CddU8OwyolvUr07Vu9MVnG3diFOPCI-f9oQZvCMKiW3Yx';
 
   // creating map markers
   const markers = locations.map(
