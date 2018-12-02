@@ -1,3 +1,12 @@
+$.ajax({
+  url:"https://api.yelp.com/businesses_review_search",
+  dataType: 'jsonp',
+  data: { term: "restaurant", latitude: 37.786882, longitude: -122.399972 },
+  success: function(datra) {
+    console.log(data)
+  }
+})
+
 var locations = [
   {
     title: "Manresa Bread",
