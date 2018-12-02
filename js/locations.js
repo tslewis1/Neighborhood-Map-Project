@@ -1,6 +1,9 @@
+const apiKey = 'B55nUzn2sGNPGNgWRLih9hhH4yT64R4UHllXLdiuYEdPW3lEtriTSdQsOP1Ne-GB-QsCjjzAL-2HIBinde8CddU8OwyolvUr07Vu9MVnG3diFOPCI-f9oQZvCMKiW3Yx';
+
 $.ajax({
-  url:"https://api.yelp.com/businesses_review_search",
+  url:"https://api.yelp.com/v3/businesses/search",
   dataType: 'jsonp',
+  headers: { Authorizatiion: 'Bearer $(apiKey)' },
   data: { term: "restaurant", latitude: 37.786882, longitude: -122.399972 },
   success: function(datra) {
     console.log(data)
