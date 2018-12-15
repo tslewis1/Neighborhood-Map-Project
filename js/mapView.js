@@ -2,10 +2,7 @@
 function initMap() {
   var map;
   var bouncingMarker = null;
-  const toggleBounceOnMarker = (
-    marker,
-    forceClose = false
-  ) => event => {
+  const toggleBounceOnMarker = (marker, forceClose = false) => event => {
     const clickedSameMarker = bouncingMarker && bouncingMarker.id === marker.id;
     if (forceClose && clickedSameMarker) {
       bouncingMarker && bouncingMarker.setAnimation(null);
@@ -24,11 +21,11 @@ function initMap() {
   };
 
   let openInfo = null;
-  const safeOpenInfoWindow = (infoWindow, marker) => (event) => {
+  const safeOpenInfoWindow = (infoWindow, marker) => event => {
     openInfo && openInfo.close();
     openInfo = infoWindow;
     infoWindow.open(map, marker);
-  }
+  };
 
   // Create a new map
   map = new google.maps.Map(document.getElementById("map"), {
@@ -54,7 +51,6 @@ function initMap() {
 
   // Yelp Client ID and API Key
   // var clientID = 'TWMNEkBZq9VALm1TOkL46w',
-  // var APIKey = 'B55nUzn2sGNPGNgWRLih9hhH4yT64R4UHllXLdiuYEdPW3lEtriTSdQsOP1Ne-GB-QsCjjzAL-2HIBinde8CddU8OwyolvUr07Vu9MVnG3diFOPCI-f9oQZvCMKiW3Yx';
 
   // creating map markers
   const markers = locations.map(
@@ -83,10 +79,7 @@ function initMap() {
     const infowindow = new google.maps.InfoWindow({
       content: title
     });
-    infowindow.addListener(
-      "closeclick",
-      toggleBounceOnMarker(marker, true)
-    );
+    infowindow.addListener("closeclick", toggleBounceOnMarker(marker, true));
 
     marker.addListener("click", event => {
       safeOpenInfoWindow(infowindow, marker)(event);

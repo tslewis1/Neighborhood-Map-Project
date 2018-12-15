@@ -1,12 +1,3 @@
-$.ajax({
-  url:"https://api.yelp.com/businesses_review_search",
-  dataType: 'jsonp',
-  data: { term: "restaurant", latitude: 37.786882, longitude: -122.399972 },
-  success: function(datra) {
-    console.log(data)
-  }
-})
-
 var locations = [
   {
     title: "Manresa Bread",
@@ -39,16 +30,6 @@ var locations = [
     category: ["bakery", "cake"]
   }
 ];
-
-const locations2 = [
-  {
-    owner: "Nothing Bundt Cakes",
-    location: { lat: 37.229968, lng: -121.981321 },
-    category: ["bakery", "cake"]
-  }
-];
-
-//TODO: make this into a function that accepts an argument so that it can be configured by app.js
 
 const bakerize = locations =>
   locations.map(location => {
