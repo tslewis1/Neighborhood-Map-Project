@@ -41,8 +41,6 @@ function initMap() {
 
 function placeMarkers(locations, map) {
   const markers = locations.map(({ title, position, category }, i) => {
-    console.log(position);
-
     var image = "map-icons/bakery.svg";
     // Create a marker per location, and put into markers array.
     return {
@@ -59,9 +57,8 @@ function placeMarkers(locations, map) {
       category
     };
   });
-
   // put markers on the map
-  markers.forEach(({ marker, title, category }) => {
+  markers.forEach(({ marker, title }) => {
     marker.setMap(map);
     const infowindow = new google.maps.InfoWindow({
       content: title

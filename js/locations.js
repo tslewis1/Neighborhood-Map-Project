@@ -1,8 +1,9 @@
 const markerize = locations =>
-  locations.map(({ name, coordinates: co, categories }) => ({
+  locations.map(({ name, coordinates: co, categories, ...rest }) => ({
     title: name,
     position: { lat: co.latitude, lng: co.longitude },
-    category: categories
+    category: categories,
+    ...rest
   }));
 
 const bakerize = locations =>
