@@ -27,7 +27,7 @@ function locationsReady(locations) {
 
 $.get(
   "http://localhost:9000",
-  { term: "bakery", latitude: 37.786882, longitude: -122.399972 },
+  { term: "bakery", latitude: ctx.mapCenter.lat, longitude: ctx.mapCenter.lng },
   locationsReady
 );
 
