@@ -2,10 +2,10 @@
 const bakerize = locations =>
   locations.map(location => {
     let valuesAsObservables = {
-        name: '',
-        streetAddress: '',
-        phone: '',
-        reviews: '',
+        name: "name",
+        streetAddress: "location: { display_address }",
+        phone: "phone: { display_phone }",
+        reviews: "rating",
 
         visible: ko.observable(false)
     };
