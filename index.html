@@ -21,10 +21,11 @@
 			<div>
 				<ul data-bind="foreach: bakeries">
 					<li>
-						<a href="#"data-bind="text: title, click: onclick" style="color: white"></a>
+						<a href="#"data-bind="text: name, click: onclick" style="color: white"></a>
 						<div data-bind="style: {display: (visible())? 'inherit' : 'none'}">
-							<p data-bind="text: address"></p>
+							<p data-bind="text: streetAddress"></p>
 							<p data-bind="text: phone"></p>
+							<p data-bind="text: rating"></p>
 						</div>
 					</li>
 				</ul>
@@ -34,16 +35,10 @@
 	</div>
 	<script src="js/mapView.js"></script>
 	<script src="js/jquery-3.3.1.min.js"></script>
-<<<<<<< HEAD
-	<script src="https://maps.googleapis.com/maps/api/js?libraries=places,geometry&key=AIzaSyCRcl69S3ORE0yakt0COJv0uwGZaRGxF20&v=3&callback=mapReady"
-=======
-	<script src="https://maps.googleapis.com/maps/api/js?libraries=places,geometry&key=AIzaSyCRcl69S3ORE0yakt0COJv0uwGZaRGxF20&v=3&callback=initMap"
->>>>>>> ce3e1daa894ade86edf4f940808db95f81233e3c
-	 async defer></script>
 	<script src="js/knockout-3.4.2.js"></script>
 	<script src="js/locations.js"></script>
 	<script src="js/filter.js"></script>
-
 	<script src="js/app.js"></script>
-
+	<script src="https://maps.googleapis.com/maps/api/js?libraries=places,geometry&key=AIzaSyCRcl69S3ORE0yakt0COJv0uwGZaRGxF20&v=3&callback=initMap"
+	async defer></script>
 </html>
