@@ -1,20 +1,11 @@
-const markerize = locations =>
-  locations.map(({ name, coordinates: co, categories, ...rest }) => ({
-    title: name,
-    position: { lat: co.latitude, lng: co.longitude },
-    category: categories,
-    ...rest
-  }));
-
 const bakerize = locations =>
-  //location is an object
-  // locations is a list
-  locations.map(({ name, categories, phone, address }) => {
+  locations.map(location => {
     let valuesAsObservables = {
-      phone,
-      address,
-      title: name, //display name
-      category: categories, // for search
+      name: "name",
+      streetAddress: "location: { display_address }",
+      phone: "phone: { display_phone }",
+      reviews: "rating",
+
       visible: ko.observable(false)
     };
     valuesAsObservables.onclick = function() {
