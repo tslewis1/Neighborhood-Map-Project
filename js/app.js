@@ -16,10 +16,10 @@ function mapReady() {
 
 function locationsReady(locations) {
   ctx.locations = locations;
-  // ko.applyBindings({
-  //   filter: filter(locations),
-  //   bakeries: ko.observableArray(bakerize(locations))
-  // });
+  ko.applyBindings({
+    filter: filter(locations),
+    bakeries: ko.observableArray(bakerize(locations))
+  });
   if (ctx.map) {
     placeMarkers(markerize(ctx.locations), ctx.map);
   }
