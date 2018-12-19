@@ -10,7 +10,7 @@ let ctx = {
 function mapReady() {
   ctx.map = initMap();
   if (ctx.locations) {
-    placeMarkers(ctx.locations, ctx.map);
+    placeMarkers(markerize(ctx.locations), ctx.map);
   }
 }
 

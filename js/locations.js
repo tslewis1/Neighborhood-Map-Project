@@ -13,3 +13,13 @@ const bakerize = locations =>
     };
     return valuesAsObservables;
   });
+
+const markerize = locations =>
+  locations.map(location => {
+    console.log(location); 
+    let markerizeValues = {
+      title: location.name,
+      position: location.coordinates
+    };
+    return markerizeValues;
+  });
