@@ -19,7 +19,10 @@ const markerize = locations =>
     console.log(location); 
     let markerizeValues = {
       title: location.name,
-      position: location.coordinates
+      position: {
+        lat: location.coordinates.latitude,
+        lng: location.coordinates.longitude
+      }
     };
     return markerizeValues;
   });
