@@ -26,7 +26,7 @@ const locationsFilter = (searchAlgorithm = searchForTitle) => (
 var filter = locations => {
   return {
     onUpdate: function({ filter: { filterParams }, bakeries }) {
-      bakeries(bakerize(locationsFilter()(filterParams(), locations)));
+      bakeries((locationsFilter(searchForTitle)(filterParams(), locations)));
       return true;
     },
     filterParams: ko.observable("stringly")

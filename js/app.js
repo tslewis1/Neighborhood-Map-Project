@@ -17,7 +17,7 @@ function mapReady() {
 function locationsReady(locations) {
   ctx.locations = locations;
   ko.applyBindings({
-    filter: filter(locations),
+    filter: filter(bakerize(locations)),
     bakeries: ko.observableArray(bakerize(locations))
   });
   if (ctx.map) {
