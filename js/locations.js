@@ -5,6 +5,10 @@ const bakerize = locations =>
       streetAddress: location.address,
       phone: location.phone,
       rating: location.rating,
+      position: {
+        lat: location.coordinates.latitude,
+        lng: location.coordinates.longitude
+      },
 
       visible: ko.observable(false)
     };

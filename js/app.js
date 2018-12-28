@@ -10,7 +10,7 @@ let ctx = {
 function mapReady() {
   ctx.map = initMap();
   if (ctx.locations) {
-    placeMarkers(markerize(ctx.locations), ctx.map);
+    placeMarkers(bakerize(ctx.locations), ctx.map);
   }
 }
 
@@ -21,7 +21,7 @@ function locationsReady(locations) {
     bakeries: ko.observableArray(bakerize(locations))
   });
   if (ctx.map) {
-    placeMarkers(markerize(ctx.locations), ctx.map);
+    placeMarkers(bakerize(ctx.locations), ctx.map);
   }
 }
 

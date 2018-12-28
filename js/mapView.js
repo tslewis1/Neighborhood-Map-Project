@@ -39,6 +39,7 @@ function initMap() {
   });
 }
 
+
 function placeMarkers(locations, map) {
   const markers = locations.map(({ title, position, category }, i) => {
     var image = "map-icons/bakery.svg";
@@ -58,10 +59,11 @@ function placeMarkers(locations, map) {
     };
   });
   // put markers on the map
-  markers.forEach(({ marker, title }) => {
+  markers.forEach(({ marker, title, name, address, phone, rating }) => {
     marker.setMap(map);
+    const contentInfo = title, name, address, phone, rating;
     const infowindow = new google.maps.InfoWindow({
-      content: title
+      content: contentInfo
     });
     infowindow.addListener(
       "closeclick",
