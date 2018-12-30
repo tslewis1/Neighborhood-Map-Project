@@ -41,27 +41,27 @@ function initMap() {
 
 
 function placeMarkers(locations, map) {
-  const markers = locations.map(({ title, position, category }, i) => {
+  const markers = locations.map((location, i) => {
     var image = "map-icons/bakery.svg";
     // Create a marker per location, and put into markers array.
     return {
       marker: new google.maps.Marker({
-        title,
-        position,
-        category,
+        title: location.name,
+        position: location.position,
         map,
         animation: google.maps.Animation.DROP,
         icon: image,
         id: i
       }),
-      title,
-      category
+      location
     };
   });
   // put markers on the map
-  markers.forEach(({ marker, title, name, address, phone, rating }) => {
+  markers.forEach((superMarker) => {
+    const {name, streetAddress, phone, rating} = superMarker.location;
+    const marker = superMarker.marker;
     marker.setMap(map);
-    const contentInfo = title, name, address, phone, rating;
+    const contentInfo = [name, streetAddress, phone, rating].map(el => `<p class = "infoWindow">${el}</p>`).join("\n");
     const infowindow = new google.maps.InfoWindow({
       content: contentInfo
     });

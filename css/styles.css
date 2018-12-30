@@ -24,6 +24,10 @@ p {
 	color: white;
 }
 
+.infoWindow {
+	color: black
+}
+
 #places-container {
 	height: 100%;
 	width: 20%;
