@@ -29,7 +29,7 @@ $.get(
   "http://localhost:9000",
   { term: "bakery", latitude: ctx.mapCenter.lat, longitude: ctx.mapCenter.lng },
   locationsReady
-);
+).fail(errorAlert => alert("Server Connection Broken"));
 
 // function bakeriesModel() {
 //   const self = this;
