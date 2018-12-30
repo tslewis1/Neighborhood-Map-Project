@@ -116,6 +116,7 @@ a {
 	text-decoration: none
 };
  
+/* For mobile devices */
 @media only screen and (max-width: 680px) {
 	#places-list {
 		display: none;
@@ -125,6 +126,7 @@ a {
 	}
 }
 
+/* For all other devices */
 @media only screen and (min-width: 680px) {
 	#places-container {
 		width: 20%;
