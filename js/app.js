@@ -30,15 +30,3 @@ $.get(
   { term: "bakery", latitude: ctx.mapCenter.lat, longitude: ctx.mapCenter.lng },
   locationsReady
 ).fail(errorAlert => alert("Server Connection Broken"));
-
-// function bakeriesModel() {
-//   const self = this;
-//   this.filter = filter;
-//   this.bakeries = ko.observableArray(["loading"]);
-//   this.hydrate = function(args) {
-//     return this;
-//   };
-// }
-// const vm = new bakeriesModel();
-// vm2 = vm.hydrate();
-// ko.applyBindings(vm2);

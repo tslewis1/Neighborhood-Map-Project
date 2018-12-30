@@ -32,3 +32,7 @@ var filter = locations => {
     filterParams: ko.observable("stringly")
   };
 };
+
+function hideList(menuBars) {
+  menuBars.classList.toggle("change")
+};

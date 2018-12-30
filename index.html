@@ -8,11 +8,17 @@
 	<link rel="stylesheet" type="text/css" href="css/map-icons.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
 	 crossorigin="anonymous">
+	 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
 	<div id="container">
-		<div id="places-container">
+		<div id="places-container" onclick="hideList(this)">
+			<div class="menu-icon-container">
+				<div class="menu-icon bar1"></div>
+				<div class="menu-icon bar2"></div>
+				<div class="menu-icon bar3"></div>
+			</div>
 			<h1>Bakeries in Los Gatos!</h1>
 			<div>
 				<input id="filter-locations-box" type="text" data-bind="textInput: filter.filterParams, event: {keyup: filter.onUpdate}">
