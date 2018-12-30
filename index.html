@@ -8,33 +8,34 @@
 	<link rel="stylesheet" type="text/css" href="css/map-icons.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
 	 crossorigin="anonymous">
-	 <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
+	 <meta name="viewport" content="width=device-width,initial-scale=1.0"></head>
 
 <body>
 	<div id="container">
-		<div id="places-container" onclick="hideList(this)">
-			<div class="menu-icon-container">
+		<div id="places-container">
+			<div class="menu-icon-container" onclick="hideIcon(this)">
 				<div class="menu-icon bar1"></div>
 				<div class="menu-icon bar2"></div>
 				<div class="menu-icon bar3"></div>
 			</div>
-			<h1>Bakeries in Los Gatos!</h1>
-			<div>
-				<input id="filter-locations-box" type="text" data-bind="textInput: filter.filterParams, event: {keyup: filter.onUpdate}">
-				<button id="filter-locations-button" data-bind="click: console.log(filter.filterParams())">Filter<i class="fas fa-filter"></i></button>
-			</div>
-			<div>
-				<ul data-bind="foreach: bakeries">
-					<li id>
-						<a href="#"data-bind="text: name, click: onclick" style="color: white"></a>
-						<div data-bind="style: {display: (visible())? 'inherit' : 'none'}">
-							<p data-bind="text: streetAddress"></p>
-							<p data-bind="text: phone"></p>
-							<p data-bind="text: rating"></p>
-						</div>
-					</li>
-				</ul>
+			
+			<div id="places-list">
+				<h1>Bakeries in Los Gatos!</h1>
+				<div>
+					<input id="filter-locations-box" type="text" data-bind="textInput: filter.filterParams, event: {keyup: filter.onUpdate}">
+				</div>
+				<div>
+					<ul data-bind="foreach: bakeries">
+						<li id>
+							<a href="#"data-bind="text: name, click: onclick" style="color: white"></a>
+							<div data-bind="style: {display: (visible())? 'inherit' : 'none'}">
+								<p data-bind="text: streetAddress"></p>
+								<p data-bind="text: phone"></p>
+								<p data-bind="text: rating"></p>
+							</div>
+						</li>
+					</ul>
+				</div>
 			</div>
 		</div>
 		<div id="map">Loading...</div>

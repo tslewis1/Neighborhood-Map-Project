@@ -24,7 +24,6 @@ transition: 0.4s;
 }
 
 .menu-icon-container {
-	display: inline-block;
 	cursor: pointer;
 }
 
@@ -61,7 +60,7 @@ p {
 }
 
 #places-container {
-	height: 100%;
+	margin-top: 20px;
 	width: 20%;
 	background-color: #032F48;
 	float: left;
@@ -71,19 +70,14 @@ p {
 	position: relative;
 }
 
+#places-list {
+	display: inline-block;
+}
+
 #filter-locations-box {
 	position: relative;
 	width: 60%;
 	margin-left: 18px;
-}
-
-#filter-locations-button {
-	font-size: 12px;
-	text-align: center;
-	border: none;
-	border-radius: 15px;
-	margin-left: 5px;
-	width: 25%;
 }
 
 #filter-locations-button:hover {
@@ -121,14 +115,21 @@ ul {
 a {
 	text-decoration: none
 };
-
+ 
 @media only screen and (max-width: 680px) {
-	#places-container {
-		width: 100%;
+	#places-list {
+		display: none;
 	};
+	.menu-icon-container {
+		display: inline-block;
+	}
 }
-/* 
-@media screen {
-	min-width: 680px;
-	max-width: ;
-} */
+
+@media only screen and (min-width: 680px) {
+	#places-container {
+		width: 20%;
+	}
+	.menu-icon-container {
+		display: none;
+	}
+}
