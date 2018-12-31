@@ -25,6 +25,10 @@ function locationsReady(locations) {
   }
 }
 
+function hideIcon(menuBars) {
+  menuBars.classList.toggle("change")
+};
+
 $.get(
   "http://localhost:9000",
   { term: "bakery", latitude: ctx.mapCenter.lat, longitude: ctx.mapCenter.lng },

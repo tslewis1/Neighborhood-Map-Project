@@ -43,7 +43,14 @@ transition: 0.4s;
 .change .bar3 {
 	-webkit-transform: rotate(45deg) translate(-7px, -4px) ;
 	transform: rotate(45deg) translate(-7px, -4px) ;
-  }
+}
+
+#menu-icon-background {
+	background-color: #032F48;
+	height: 28px;
+	width: 28px;
+	display: none;
+}
 
 h1 {
 	color: white;
@@ -60,8 +67,7 @@ p {
 }
 
 #places-container {
-	margin-top: 20px;
-	width: 20%;
+	margin-top: 2px;
 	background-color: #032F48;
 	float: left;
 	text-align: left;
@@ -72,6 +78,7 @@ p {
 
 #places-list {
 	display: inline-block;
+	overflow: auto;
 }
 
 #filter-locations-box {
@@ -122,7 +129,10 @@ a {
 		display: none;
 	};
 	.menu-icon-container {
-		display: inline-block;
+		display: inline;
+	}
+	#menu-icon-background {
+		display: inline;
 	}
 }
 

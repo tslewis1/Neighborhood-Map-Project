@@ -29,10 +29,6 @@ var filter = locations => {
       bakeries((locationsFilter(searchForTitle)(filterParams(), locations)));
       return true;
     },
-    filterParams: ko.observable("stringly")
+    filterParams: ko.observable("Search Me!")
   };
-};
-
-function hideList(menuBars) {
-  menuBars.classList.toggle("change")
 };
