@@ -78,7 +78,7 @@ p {
 
 #places-list {
 	display: inline-block;
-	overflow: auto;
+	overflow: scroll;
 }
 
 #filter-locations-box {
@@ -126,7 +126,7 @@ a {
 /* For mobile devices */
 @media only screen and (max-width: 680px) {
 	#places-list {
-		display: none;
+		visibility: hidden;
 	};
 	.menu-icon-container {
 		display: inline;
