@@ -1,5 +1,5 @@
 function titleSelector(obj) {
-  return obj && obj.title;
+  return obj && obj.name;
 }
 
 function categorySelector(obj) {
@@ -20,13 +20,16 @@ const locationsFilter = (searchAlgorithm = searchForTitle) => (
   searchParam,
   locations
 ) => {
-  return locations.filter(location => searchAlgorithm(searchParam, location));
+  const locFiltered = locations.filter(location => searchAlgorithm(searchParam, location));
+  return locFiltered;
 };
 
 var filter = locations => {
   return {
     onUpdate: function({ filter: { filterParams }, bakeries }) {
-      bakeries((locationsFilter(searchForTitle)(filterParams(), locations)));
+      let bakeryFilter = (locationsFilter(searchForTitle)(filterParams(), locations));
+      bakeries(bakeryFilter);
+      console.log(bakeryFilter);
       return true;
     },
     filterParams: ko.observable("Search Me!")

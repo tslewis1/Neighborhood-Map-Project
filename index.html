@@ -13,7 +13,7 @@
 <body>
 	<div id="container">
 		<div id="places-container">
-			<div class="menu-icon-container" onclick="hideIcon(this)">
+			<div id="menu-icon-container" onclick="hideIcon(this)">
 				<div class="menu-icon bar1"></div>
 				<div class="menu-icon bar2"></div>
 				<div class="menu-icon bar3"></div>
@@ -28,7 +28,7 @@
 				</div>
 				<div>
 					<ul data-bind="foreach: bakeries">
-						<li id>
+						<li>
 							<a href="#"data-bind="text: name, click: onclick" style="color: white"></a>
 							<div data-bind="style: {display: (visible())? 'inherit' : 'none'}">
 								<p data-bind="text: streetAddress"></p>

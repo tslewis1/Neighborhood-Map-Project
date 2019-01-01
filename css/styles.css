@@ -78,7 +78,7 @@ p {
 
 #places-list {
 	display: inline-block;
-	overflow: scroll;
+	overflow-y: scroll;
 }
 
 #filter-locations-box {
@@ -124,20 +124,22 @@ a {
 };
  
 /* For mobile devices */
-@media only screen and (max-width: 680px) {
+@media only screen and (max-width: 600px) {
 	#places-list {
-		visibility: hidden;
+		display: none;
+		/* width: 100%; */
 	};
-	.menu-icon-container {
-		display: inline;
+	#menu-icon-container {
+		position: absolute;
+		display: inline-block
 	}
 	#menu-icon-background {
-		display: inline;
+		display: inline-block;
 	}
 }
 
 /* For all other devices */
-@media only screen and (min-width: 680px) {
+@media only screen and (min-width: 600px) {
 	#places-container {
 		width: 20%;
 	}
