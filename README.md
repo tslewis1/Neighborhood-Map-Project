@@ -15,6 +15,7 @@ https://github.com/Iancam/neighborhood_maps_server
 ## Sources Used
 
 https://www.w3schools.com/howto/howto_css_menu_icon.asp
+https://medium.freecodecamp.org/the-100-correct-way-to-do-css-breakpoints-88d6a5ba1862
 
 ### GitHub Repos
 
