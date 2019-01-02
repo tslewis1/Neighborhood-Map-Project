@@ -4,7 +4,7 @@ const bakerize = locations =>
       name: location.name,
       streetAddress: location.address,
       phone: location.phone,
-      rating: location.rating,
+      rating: "Rating: " + location.rating,
       position: {
         lat: location.coordinates.latitude,
         lng: location.coordinates.longitude
