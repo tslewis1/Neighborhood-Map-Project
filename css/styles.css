@@ -15,7 +15,7 @@ html, body {
 }
 
 /* Create menu icon for responsive screens */
-.bar1, .bar2, .bar3 {
+/* .bar1, .bar2, .bar3 {
 width: 25px;
 height: 2px;
 background-color: black;
@@ -25,22 +25,22 @@ transition: 0.4s;
 
 .menu-icon-container {
 	cursor: pointer;
-}
+} */
 
 /* Rotate bar1 */
 
-.change .bar1 {
+/* .change .bar1 {
 	-webkit-transform: rotate(-45deg) translate(-5=7px, 4px) ;
 	transform: rotate(-45deg) translate(-7px, 4px) ;
-}
+} */
 
 /* Fade out bar2 */
-.change .bar2 {
+/* .change .bar2 {
 	opacity: 0;
-}
+} */
 
 /* Rotate bar3 */
-.change .bar3 {
+/* .change .bar3 {
 	-webkit-transform: rotate(45deg) translate(-7px, -4px) ;
 	transform: rotate(45deg) translate(-7px, -4px) ;
 }
@@ -50,7 +50,7 @@ transition: 0.4s;
 	height: 28px;
 	width: 28px;
 	display: none;
-}
+} */
 
 h1 {
 	color: white;
@@ -117,6 +117,7 @@ p {
 
 ul {
 	list-style-type: none;
+	padding-inline-start: 15px;
 }
 
 a {
@@ -125,25 +126,19 @@ a {
  
 /* For mobile devices */
 @media only screen and (max-width: 600px) {
-	#places-list {
+	.bakeries-list {
 		display: none;
-		/* width: 100%; */
-	};
-	#menu-icon-container {
-		position: absolute;
-		display: inline-block
 	}
-	#menu-icon-background {
-		display: inline-block;
+
+	#places-list {
+		width: 375px;
 	}
 }
 
-/* For all other devices */
-@media only screen and (min-width: 600px) {
-	#places-container {
-		width: 20%;
-	}
-	.menu-icon-container {
-		display: none;
+@media only screen and (max-width: 890px) {
+	#places-list {
+		max-height: 100%;
+		width: 375px;
+		overflow: scroll;
 	}
 }
