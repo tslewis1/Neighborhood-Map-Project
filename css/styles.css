@@ -117,7 +117,7 @@ p {
 
 ul {
 	list-style-type: none;
-	padding-inline-start: 15px;
+	padding-inline-start: 22px;
 }
 
 a {
@@ -130,15 +130,15 @@ a {
 		display: none;
 	}
 
-	#places-list {
-		width: 375px;
+	#places-container {
+		width: 215px;
 	}
 }
 
 @media only screen and (max-width: 890px) {
-	#places-list {
+	#places-container {
 		max-height: 100%;
-		width: 375px;
+		width: 215px;
 		overflow: scroll;
 	}
 }
