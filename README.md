@@ -17,6 +17,7 @@ https://github.com/Iancam/neighborhood_maps_server
 https://www.w3schools.com/howto/howto_css_menu_icon.asp
 https://medium.freecodecamp.org/the-100-correct-way-to-do-css-breakpoints-88d6a5ba1862
 https://stackoverflow.com/questions/639695/how-to-convert-latitude-or-longitude-to-meters
+https://www.w3schools.com/howto/howto_js_media_queries.asp
 
 ### GitHub Repos
 
