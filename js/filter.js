@@ -28,14 +28,16 @@ const locationsFilter = (searchAlgorithm = searchForTitle) => (
 
 var filter = locations => {
   return {
-    hasFocus: ko.observable(false),
+    elemsVisible: ko.observable(false),
+
     onUpdate: function({ filter: { filterParams }, bakeries }) {
       let bakeryFilter = locationsFilter(searchForTitle)(
         filterParams(),
         locations
       );
       bakeries(bakeryFilter);
-      console.log(bakeryFilter);
+      console.log("this one is bound tho");
+
       return true;
     },
     filterParams: ko.observable("Search Me!")

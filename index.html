@@ -20,10 +20,10 @@
 					type="text" 
 					data-bind="textInput: filter.filterParams,
 					event: {keyup: filter.onUpdate},
-					hasFocus: filter.hasFocus,
+					click: ()=>filter.elemsVisible(true),
 					">
 				</div>
-				<div class="bakeries-list" data-bind="style: {display: (filter.hasFocus() || !filter.hidden)? 'inherit' : 'none'}">
+				<div class="bakeries-list" data-bind="style: {display: (filter.elemsVisible())? 'inherit' : 'none'}">
 					<ul data-bind="foreach: bakeries">
 						<li>
 							<a href="#"data-bind="text: name, click: onclick" style="color: white"></a>
@@ -35,7 +35,7 @@
 						</li>
 					</ul>
 				</div>
-				<div id="menu-icon-container" data-bind="onclick: hideIcon(this), onclick: filter.hidden(true)">
+				<div id="menu-icon-container" data-bind="onclick: hideIcon(this), onclick: filter.elemsVisible(false)">
 					<div class="menu-icon bar1"></div>
 					<div class="menu-icon bar2"></div>
 					<div class="menu-icon bar3"></div>
