@@ -17,16 +17,3 @@ const bakerize = locations =>
     };
     return valuesAsObservables;
   });
-
-const markerize = locations =>
-  locations.map(location => {
-    console.log(location); 
-    let markerizeValues = {
-      title: location.name,
-      position: {
-        lat: location.coordinates.latitude,
-        lng: location.coordinates.longitude
-      }
-    };
-    return markerizeValues;
-  });

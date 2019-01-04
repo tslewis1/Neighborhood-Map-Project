@@ -13,20 +13,17 @@
 <body>
 	<div id="container">
 		<div id="places-container">
-			<div id="menu-icon-container" onclick="hideIcon(this)">
-				<div class="menu-icon bar1"></div>
-				<div class="menu-icon bar2"></div>
-				<div class="menu-icon bar3"></div>
-			</div>
-
-			<div id="menu-icon-background"></div>
-			
 			<div id="places-list">
 				<h1>Bakeries in Los Gatos!</h1>
 				<div>
-					<input id="filter-locations-box" type="text" data-bind="textInput: filter.filterParams, event: {keyup: filter.onUpdate}">
+					<input id="filter-locations-box" 
+					type="text" 
+					data-bind="textInput: filter.filterParams,
+					event: {keyup: filter.onUpdate},
+					hasFocus: filter.hasFocus,
+					">
 				</div>
-				<div class="bakeries-list">
+				<div class="bakeries-list" data-bind="style: {display: (filter.hasFocus() || !filter.hidden)? 'inherit' : 'none'}">
 					<ul data-bind="foreach: bakeries">
 						<li>
 							<a href="#"data-bind="text: name, click: onclick" style="color: white"></a>
@@ -38,6 +35,13 @@
 						</li>
 					</ul>
 				</div>
+				<div id="menu-icon-container" data-bind="onclick: hideIcon(this), onclick: filter.hidden(true)">
+					<div class="menu-icon bar1"></div>
+					<div class="menu-icon bar2"></div>
+					<div class="menu-icon bar3"></div>
+				</div>
+				
+				<div id="menu-icon-background"></div>
 			</div>
 		</div>
 		<div id="map">Loading...</div>

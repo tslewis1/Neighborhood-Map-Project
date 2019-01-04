@@ -20,14 +20,20 @@ const locationsFilter = (searchAlgorithm = searchForTitle) => (
   searchParam,
   locations
 ) => {
-  const locFiltered = locations.filter(location => searchAlgorithm(searchParam, location));
+  const locFiltered = locations.filter(location =>
+    searchAlgorithm(searchParam, location)
+  );
   return locFiltered;
 };
 
 var filter = locations => {
   return {
+    hasFocus: ko.observable(false),
     onUpdate: function({ filter: { filterParams }, bakeries }) {
-      let bakeryFilter = (locationsFilter(searchForTitle)(filterParams(), locations));
+      let bakeryFilter = locationsFilter(searchForTitle)(
+        filterParams(),
+        locations
+      );
       bakeries(bakeryFilter);
       console.log(bakeryFilter);
       return true;
