@@ -7,7 +7,6 @@ This app also has a server to handle back-end requests. The server will run on h
 1. Clone the repo and open index.html in your favorite browser.
 2. In Terminal, run node index.js or nodemon index.js to run the server
 
-
 ## Server Repo
 
 https://github.com/Iancam/neighborhood_maps_server
