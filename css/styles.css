@@ -132,20 +132,8 @@ a {
 
 /* For mobile devices */
 @media only screen and (max-width: 600px) {
-  .bakeries-list {
-    display: none;
-  }
-
   #places-container {
     width: 100%;
     text-align: center;
   }
-}
-
-@media only screen and (max-width: 890px) {
-  /* .places-container {
-    max-height: 100%;
-    width: 215px;
-    overflow: scroll;
-  } */
 }

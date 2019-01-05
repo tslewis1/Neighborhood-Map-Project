@@ -1,4 +1,5 @@
 let ctx = {
+  mobile_bp: window.matchMedia("(max-width: 600px)"),
   mapCenter: {
     lat: 37.228962,
     lng: -121.984667
@@ -10,18 +11,23 @@ let ctx = {
 function mapReady() {
   ctx.map = initMap();
   if (ctx.locations) {
-    placeMarkers(bakerize(ctx.locations), ctx.map);
+    placeMarkers(ctx.locations, ctx.map);
   }
 }
 
 function locationsReady(locations) {
-  ctx.locations = locations;
-  ko.applyBindings({
-    filter: filter(bakerize(locations)),
-    bakeries: ko.observableArray(bakerize(locations))
-  });
+  ctx.locations = bakerize(locations);
+  const vm = {
+    filter: filter(ctx),
+    bakeries: ko.observableArray(ctx.locations)
+  };
+  ko.applyBindings(vm);
+  ctx.mobile_bp.addListener(mql =>
+    vm.filter.elemsVisible(mql.matches ? "S_" : "B_")
+  );
+
   if (ctx.map) {
-    placeMarkers(bakerize(ctx.locations), ctx.map);
+    placeMarkers(ctx.locations, ctx.map);
   }
 }
 
