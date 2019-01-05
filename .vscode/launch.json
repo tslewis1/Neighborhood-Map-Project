@@ -9,7 +9,22 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}/Neighborhood Map Project/js/filter.js"
+            "program": "${workspaceFolder}/Users/tarynslewis/Documents/Coding/Udacity/Front-End-Nanodegree/4. Advanced JS/Neighborhood Map Project/Neighborhood Map Project/filter.js"
         }
+        
+        {
+            "name": "Launch localhost",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost/9000",
+            "webRoot": "${workspaceFolder}/neighborhood_maps_server"
+        },
+        {
+            "name": "Launch index.html",
+            "type": "chrome",
+            "request": "launch",
+            "file": "${workspaceFolder}/Users/tarynslewis/Documents/Coding/Udacity/Front-End-Nanodegree/4. Advanced JS/Neighborhood Map Project/Neighborhood Map Project/filter.js"
+        },
     ]
+
 }
