@@ -39,7 +39,6 @@ function initMap() {
   });
 }
 
-
 function placeMarkers(locations, map) {
   const markers = locations.map((location, i) => {
     var image = "map-icons/bakery.svg";
@@ -57,11 +56,13 @@ function placeMarkers(locations, map) {
     };
   });
   // put markers on the map
-  markers.forEach((superMarker) => {
-    const {name, streetAddress, phone, rating} = superMarker.location;
+  markers.forEach(superMarker => {
+    const { name, streetAddress, phone, rating } = superMarker.location;
     const marker = superMarker.marker;
     marker.setMap(map);
-    const contentInfo = [name, streetAddress, phone, rating].map(el => `<p class = "infoWindow">${el}</p>`).join("\n");
+    const contentInfo = [name, streetAddress, phone, rating]
+      .map(el => `<p class = "infoWindow">${el}</p>`)
+      .join("\n");
     const infowindow = new google.maps.InfoWindow({
       content: contentInfo
     });
