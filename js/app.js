@@ -1,5 +1,6 @@
 // Define map center
 let ctx = {
+  mobile_bp: window.matchMedia("(max-width: 600px)"),
   mapCenter: {
     lat: 37.228962,
     lng: -121.984667
@@ -12,20 +13,45 @@ let ctx = {
 function mapReady() {
   ctx.map = initMap();
   if (ctx.locations) {
+<<<<<<< HEAD
     // Use map center to place markers when the locations have been "bakerized"
     placeMarkers(bakerize(ctx.locations), ctx.map);
+||||||| merged common ancestors
+    placeMarkers(bakerize(ctx.locations), ctx.map);
+=======
+    placeMarkers(ctx.locations, ctx.map);
+>>>>>>> origin/master
   }
 }
 
 function locationsReady(locations) {
+<<<<<<< HEAD
   ctx.locations = locations;
   // Create a ViewModel and apply Knockout bindings in index.html
   ko.applyBindings({
     filter: filter(bakerize(locations)),
     bakeries: ko.observableArray(bakerize(locations))
   });
+||||||| merged common ancestors
+  ctx.locations = locations;
+  ko.applyBindings({
+    filter: filter(bakerize(locations)),
+    bakeries: ko.observableArray(bakerize(locations))
+  });
+=======
+  ctx.locations = bakerize(locations);
+  const vm = {
+    filter: filter(ctx),
+    bakeries: ko.observableArray(ctx.locations)
+  };
+  ko.applyBindings(vm);
+  ctx.mobile_bp.addListener(mql =>
+    vm.filter.elemsVisible(mql.matches ? "S_" : "B_")
+  );
+
+>>>>>>> origin/master
   if (ctx.map) {
-    placeMarkers(bakerize(ctx.locations), ctx.map);
+    placeMarkers(ctx.locations, ctx.map);
   }
 }
 

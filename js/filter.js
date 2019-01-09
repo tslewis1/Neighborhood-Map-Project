@@ -24,20 +24,86 @@ const locationsFilter = (searchAlgorithm = searchForTitle) => (
   return locFiltered;
 };
 
-var filter = locations => {
-  return {
-    elemsVisible: ko.observable(false),
+const zip = (t, v) => t.map((t, i) => [t, v[i]]);
 
+<<<<<<< HEAD
     // Uses filter parameters to search for bakery locations that have been passed in
+||||||| merged common ancestors
+=======
+const match = (s, pattern) =>
+  szip(s, pattern).reduce(
+    (prev, [c, pc]) => prev && (pc === "_" ? true : pc === c),
+    true
+  );
+const szip = (s1, s2) => zip(s1.split(""), s2.split(""));
+const overWrite = (s, change) =>
+  szip(s, change)
+    .map(([d, v]) => (d === "_" ? v : d))
+    .join("");
+
+const getValidTransitions = (state, change, graph) => {
+  const options = graph[state].filter(next => {
+    const matched = match(next, change);
+    console.log({ state, next, change, matched });
+    return matched;
+  });
+  return options;
+};
+
+const sum = vals => vals.reduce((summ, cur) => summ + cur, 0);
+
+var filter = ({ mobile_bp, locations }) => {
+  const graph = {
+    BB: ["SS"],
+    SS: ["BB", "SB"],
+    SB: ["SS", "BB"]
+  };
+
+  const filterVM = {
+>>>>>>> origin/master
     onUpdate: function({ filter: { filterParams }, bakeries }) {
       let bakeryFilter = locationsFilter(searchForTitle)(
         filterParams(),
         locations
       );
       bakeries(bakeryFilter);
+<<<<<<< HEAD
 
+||||||| merged common ancestors
+      console.log("this one is bound tho");
+
+=======
+>>>>>>> origin/master
       return true;
     },
-    filterParams: ko.observable("Search Me!")
+    filterParams: ko.observable("Search Me!"),
+    state: ko.observable(mobile_bp.matches ? "SS" : "BB")
   };
+  filterVM.elemsVisible = ko.computed({
+    read: function() {
+      return filterVM.state();
+    },
+    write: update => {
+      const currentState = filterVM.state();
+      const options = getValidTransitions(currentState, update, graph);
+      const sizes = options.map(option => {
+        const changes = szip(option, currentState).map(([c1, c2]) =>
+          c1 === c2 ? 0 : 1
+        );
+        const distance = sum(changes);
+        return distance;
+      });
+      const closestOptionIndex = sizes.reduce(
+        ([val, i], currentVal, currentI) =>
+          val < currentVal ? [val, index] : [currentVal, currentI],
+        [Infinity, -1]
+      )[1];
+
+      const next = options[closestOptionIndex];
+
+      if (next) filterVM.state(next);
+    }
+  });
+
+  return filterVM;
 };

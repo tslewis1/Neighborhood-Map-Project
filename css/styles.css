@@ -92,10 +92,6 @@ a {
 
 /* For mobile devices */
 @media only screen and (max-width: 600px) {
-  .bakeries-list {
-    display: none;
-  }
-
   #places-container {
     width: 100%;
     text-align: center;
