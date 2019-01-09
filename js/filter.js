@@ -24,8 +24,10 @@ const locationsFilter = (searchAlgorithm = searchForTitle) => (
   return locFiltered;
 };
 
+// Combines elements of two lists on their index
 const zip = (t, v) => t.map((t, i) => [t, v[i]]);
 
+// Compares strings, ignoring the underscore character
 const match = (s, pattern) => {
   const zipped = szip(s, pattern);
   return zipped.reduce(
@@ -33,12 +35,15 @@ const match = (s, pattern) => {
     true
   );
 };
+// Zip for strings
 const szip = (s1, s2) => zip(s1.split(""), s2.split(""));
+// Applies a change to a string, ignoring underscore characters
 const overWrite = (s, change) =>
   szip(s, change)
     .map(([d, v]) => (d === "_" ? v : d))
     .join("");
 
+// Given a graph, a state and a change, returns all transitions or all next states from current state that match that change
 const getValidTransitions = (state, change, graph) => {
   const options = graph[state].filter(next => {
     const matched = match(next, change);
@@ -51,6 +56,7 @@ const sum = vals => vals.reduce((summ, cur) => summ + cur, 0);
 
 var filter = ({ mobile_bp, locations }) => {
   const graph = {
+    // Set of all states with their state transitions
     BB: ["SS"],
     SS: ["BB", "SB"],
     SB: ["SS", "BB"]
@@ -71,6 +77,7 @@ var filter = ({ mobile_bp, locations }) => {
     state: ko.observable(mobile_bp.matches ? "SS" : "BB")
   };
 
+  // ViewModel that uses graph
   filterVM.elemsVisible = ko.computed({
     read: function() {
       return filterVM.state();
@@ -78,7 +85,9 @@ var filter = ({ mobile_bp, locations }) => {
     write: ([expectedState, update]) => {
       const currentState = filterVM.state();
       const matches = match(expectedState, currentState);
+      // If the expected state does't match the current state, don't do anything
       if (!matches) return;
+      // Get the option with shortest edit distance from current state
       const options = getValidTransitions(currentState, update, graph);
       const sizes = options.map(option => {
         const changes = szip(option, currentState).map(([c1, c2]) =>
