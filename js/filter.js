@@ -26,10 +26,6 @@ const locationsFilter = (searchAlgorithm = searchForTitle) => (
 
 const zip = (t, v) => t.map((t, i) => [t, v[i]]);
 
-<<<<<<< HEAD
-    // Uses filter parameters to search for bakery locations that have been passed in
-||||||| merged common ancestors
-=======
 const match = (s, pattern) =>
   szip(s, pattern).reduce(
     (prev, [c, pc]) => prev && (pc === "_" ? true : pc === c),
@@ -60,20 +56,14 @@ var filter = ({ mobile_bp, locations }) => {
   };
 
   const filterVM = {
->>>>>>> origin/master
+    // Uses filter parameters to search for bakery locations that have been passed in
     onUpdate: function({ filter: { filterParams }, bakeries }) {
       let bakeryFilter = locationsFilter(searchForTitle)(
         filterParams(),
         locations
       );
       bakeries(bakeryFilter);
-<<<<<<< HEAD
 
-||||||| merged common ancestors
-      console.log("this one is bound tho");
-
-=======
->>>>>>> origin/master
       return true;
     },
     filterParams: ko.observable("Search Me!"),

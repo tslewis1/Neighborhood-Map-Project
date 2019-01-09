@@ -13,32 +13,13 @@ let ctx = {
 function mapReady() {
   ctx.map = initMap();
   if (ctx.locations) {
-<<<<<<< HEAD
+    placeMarkers(ctx.locations, ctx.map);
     // Use map center to place markers when the locations have been "bakerized"
     placeMarkers(bakerize(ctx.locations), ctx.map);
-||||||| merged common ancestors
-    placeMarkers(bakerize(ctx.locations), ctx.map);
-=======
-    placeMarkers(ctx.locations, ctx.map);
->>>>>>> origin/master
   }
 }
 
 function locationsReady(locations) {
-<<<<<<< HEAD
-  ctx.locations = locations;
-  // Create a ViewModel and apply Knockout bindings in index.html
-  ko.applyBindings({
-    filter: filter(bakerize(locations)),
-    bakeries: ko.observableArray(bakerize(locations))
-  });
-||||||| merged common ancestors
-  ctx.locations = locations;
-  ko.applyBindings({
-    filter: filter(bakerize(locations)),
-    bakeries: ko.observableArray(bakerize(locations))
-  });
-=======
   ctx.locations = bakerize(locations);
   const vm = {
     filter: filter(ctx),
@@ -49,7 +30,6 @@ function locationsReady(locations) {
     vm.filter.elemsVisible(mql.matches ? "S_" : "B_")
   );
 
->>>>>>> origin/master
   if (ctx.map) {
     placeMarkers(ctx.locations, ctx.map);
   }
