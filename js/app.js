@@ -1,3 +1,4 @@
+// Define map center
 let ctx = {
   mobile_bp: window.matchMedia("(max-width: 600px)"),
   mapCenter: {
@@ -9,10 +10,13 @@ let ctx = {
   locations: null
 };
 
+// Load map from Google Maps API
 function mapReady() {
   ctx.map = initMap();
   if (ctx.locations) {
     placeMarkers(ctx.locations, ctx.map);
+    // Use map center to place markers when the locations have been "bakerized"
+    placeMarkers(bakerize(ctx.locations), ctx.map);
   }
 }
 
@@ -32,10 +36,7 @@ function locationsReady(locations) {
   }
 }
 
-function hideIcon(menuBars) {
-  menuBars.classList.toggle("change");
-}
-
+// Uses server to load locations within 2500m of the map center with a search term
 $.get(
   "http://localhost:9000",
   {
@@ -45,4 +46,5 @@ $.get(
     distance: 2500
   },
   locationsReady
+  // Error message that shows up if the server does not load properly
 ).fail(errorAlert => alert("Server Connection Broken"));
