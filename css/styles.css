@@ -15,46 +15,6 @@ body {
   box-sizing: border-box;
 }
 
-/* Create menu icon for responsive screens */
-/* .bar1,
-.bar2,
-.bar3 {
-  width: 25px;
-  height: 2px;
-  background-color: black;
-  margin: 6px 0;
-  transition: 0.4s;
-}
-
-.menu-icon-container {
-  cursor: pointer;
-} */
-
-/* Rotate bar1 */
-
-/* /* .change .bar1 {
-	-webkit-transform: rotate(-45deg) translate(-5=7px, 4px) ;
-	transform: rotate(-45deg) translate(-7px, 4px) ;
-} */
-
-/* Fade out bar2 */
-/* .change .bar2 {
-	opacity: 0;
-} */
-
-/* Rotate bar3 */
-/* .change .bar3 {
-	-webkit-transform: rotate(45deg) translate(-7px, -4px) ;
-	transform: rotate(45deg) translate(-7px, -4px) ;
-} */
-
-/* #menu-icon-background {
-  background-color: #032f48;
-  height: 28px;
-  width: 28px;
-  display: none;
-} */
-
 h1 {
   color: white;
   font-size: 20px;
