@@ -4,6 +4,7 @@ let ctx = {
     lat: 37.228962,
     lng: -121.984667
   },
+  vm: null,
   map: null,
   locations: null
 };
@@ -23,9 +24,9 @@ function locationsReady(locations) {
   };
   ko.applyBindings(vm);
   ctx.mobile_bp.addListener(mql =>
-    vm.filter.elemsVisible(mql.matches ? "S_" : "B_")
+    vm.filter.elemsVisible(mql.matches ? ["__", "S_"] : ["__", "B_"])
   );
-
+  ctx.vm = vm;
   if (ctx.map) {
     placeMarkers(ctx.locations, ctx.map);
   }

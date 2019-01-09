@@ -28,11 +28,13 @@ const locationsFilter = (searchAlgorithm = searchForTitle) => (
 
 const zip = (t, v) => t.map((t, i) => [t, v[i]]);
 
-const match = (s, pattern) =>
-  szip(s, pattern).reduce(
-    (prev, [c, pc]) => prev && (pc === "_" ? true : pc === c),
+const match = (s, pattern) => {
+  const zipped = szip(s, pattern);
+  return zipped.reduce(
+    (prev, [c, pc]) => prev && (pc === "_" || c === "_" ? true : pc === c),
     true
   );
+};
 const szip = (s1, s2) => zip(s1.split(""), s2.split(""));
 const overWrite = (s, change) =>
   szip(s, change)
@@ -42,7 +44,6 @@ const overWrite = (s, change) =>
 const getValidTransitions = (state, change, graph) => {
   const options = graph[state].filter(next => {
     const matched = match(next, change);
-    console.log({ state, next, change, matched });
     return matched;
   });
   return options;
@@ -69,12 +70,15 @@ var filter = ({ mobile_bp, locations }) => {
     filterParams: ko.observable("Search Me!"),
     state: ko.observable(mobile_bp.matches ? "SS" : "BB")
   };
+
   filterVM.elemsVisible = ko.computed({
     read: function() {
       return filterVM.state();
     },
-    write: update => {
+    write: ([expectedState, update]) => {
       const currentState = filterVM.state();
+      const matches = match(expectedState, currentState);
+      if (!matches) return;
       const options = getValidTransitions(currentState, update, graph);
       const sizes = options.map(option => {
         const changes = szip(option, currentState).map(([c1, c2]) =>
@@ -84,11 +88,12 @@ var filter = ({ mobile_bp, locations }) => {
         return distance;
       });
       const closestOptionIndex = sizes.reduce(
-        ([val, i], currentVal, currentI) =>
-          val < currentVal ? [val, index] : [currentVal, currentI],
+        ([lastDistance, _], currentDistance, currentI) =>
+          lastDistance < currentDistance
+            ? [lastDistance, index]
+            : [currentDistance, currentI],
         [Infinity, -1]
       )[1];
-
       const next = options[closestOptionIndex];
 
       if (next) filterVM.state(next);

@@ -72,6 +72,7 @@ function placeMarkers(locations, map) {
     );
 
     marker.addListener("click", event => {
+      ctx.vm.filter.elemsVisible(["SB", "SS"]);
       mapFunctions.safeOpenInfoWindow(infowindow, marker)(event);
       mapFunctions.toggleBounceOnMarker(marker)(event);
     });

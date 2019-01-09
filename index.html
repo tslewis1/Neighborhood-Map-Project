@@ -16,18 +16,12 @@
 			<div id="places-list">
 				<h1>Bakeries in Los Gatos!</h1>
 				<div class="filter-locations-search">
-					<div id="menu-icon-container" data-bind="onclick: hideIcon(this), onclick: filter.elemsVisible('_B')">
-						<div class="menu-icon bar1"></div>
-						<div class="menu-icon bar2"></div>
-						<div class="menu-icon bar3"></div>
-					</div>
-					<div id="menu-icon-background"></div>
 					<input id="filter-locations-box" 
 					type="text" 
 					data-bind="textInput: filter.filterParams,
 					event: {
 						keyup: filter.onUpdate,
-						click:()=>filter.elemsVisible('_B')
+						click:()=>filter.elemsVisible(['S_','_B'])
 					}">
 				</div>
 				<div class="bakeries-list" data-bind="style: {display: (filter.elemsVisible().split('')[1]==='B')? 'inherit' : 'none'}">
@@ -44,7 +38,7 @@
 				</div>
 			</div>
 		</div>
-		<div id="map" data-bind="event:{click:()=>filter.elemsVisible('_S')}">Loading...</div>
+		<div id="map" data-bind="event:{click:()=>filter.elemsVisible(['SB','SS'])}">Loading...</div>
 	</div>
 	<script src="js/mapView.js"></script>
 	<script src="js/jquery-3.3.1.min.js"></script>
